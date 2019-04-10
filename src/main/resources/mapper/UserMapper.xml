@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.myblog.dao.UserMapper">
+    <select id="getUser" resultType="user">
+        select * from user where userName = #{userName} and password = #{password}
+    </select>
+
+    <select id="getBlogs" resultType="user_blogs">
+        SELECT blog_id,blog_title,blog_content, DATE_FORMAT(blog_date,'%m-%d-%Y') AS blog_date,blog_writer,blog_remarks FROM user_blogs
+    </select>
+    <select id="getBlogById" resultType="user_blogs">
+        SELECT blog_id,blog_title,blog_content, DATE_FORMAT(blog_date,'%m-%d-%Y') AS blog_date,blog_writer,blog_remarks FROM user_blogs WHERE blog_id =#{blog_id}
+    </select>
+</mapper>
