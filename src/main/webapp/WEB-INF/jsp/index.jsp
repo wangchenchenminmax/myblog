@@ -89,7 +89,7 @@
                                 <div class="headline"><a href="${pageContext.request.contextPath }/blogs">博客</a></div>
                                 <a href="#">
                                     <c:if test="${user!=null}">
-                                    <div class="link">New</div>
+                                    <div class="link"><a href="${pageContext.request.contextPath }/writeblog"> New</a></div>
                                 </a></c:if>
                             </div>
                         </div>

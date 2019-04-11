@@ -9,9 +9,15 @@
     </select>
 
     <select id="getBlogs" resultType="user_blogs">
-        SELECT blog_id,blog_title,blog_content, DATE_FORMAT(blog_date,'%m-%d-%Y') AS blog_date,blog_writer,blog_remarks FROM user_blogs
+        SELECT blog_id,blog_title,blog_content, DATE_FORMAT(blog_date,'%m-%d-%Y') AS blog_date,blog_writer,blog_remarks FROM user_blogs LIMIT #{startId},#{endId}
     </select>
     <select id="getBlogById" resultType="user_blogs">
         SELECT blog_id,blog_title,blog_content, DATE_FORMAT(blog_date,'%m-%d-%Y') AS blog_date,blog_writer,blog_remarks FROM user_blogs WHERE blog_id =#{blog_id}
     </select>
+    <select id="selectBlogCounts" resultType="int">
+       SELECT COUNT(*) FROM user_blogs
+    </select>
+    <insert id="addBlog" parameterType="user_blogs">
+INSERT INTO user_blogs (blog_title,blog_content,blog_date,blog_writer,blog_remarks) VALUES (#{blog_title},#{blog_content},#{blog_date},#{blog_writer},#{blog_remarks})
+    </insert>
 </mapper>

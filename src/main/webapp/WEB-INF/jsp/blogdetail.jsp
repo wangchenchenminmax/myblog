@@ -12,7 +12,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>博客列表</title>
+    <title>WRITE</title>
 
     <link href="${pageContext.request.contextPath }/static/css/index.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery.min.js"></script>
@@ -60,12 +60,12 @@
 
         <div style="background: #353E4A;">
             <h2 style="color: #53e3a6"> ${blog.blog_title}</h2>
-           <div><textarea readonly style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; ">
-     ${blog.blog_content}</textarea></div>
+            <div><textarea readonly style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; ">
+                ${blog.blog_content}</textarea></div>
 
 
 
-    <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span><a href="/">${blog.blog_remarks}</a></span></p>
+            <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span><a href="/">${blog.blog_remarks}</a></span></p>
 
 
 
@@ -78,3 +78,4 @@
 </body>
 
 </html>
+

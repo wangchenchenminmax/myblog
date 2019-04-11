@@ -12,7 +12,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>博客列表</title>
+    <title>BLOGS</title>
 
     <link href="${pageContext.request.contextPath }/static/css/index.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery.min.js"></script>
@@ -58,7 +58,7 @@
 <main>
     <div class="main-content">
 
-        <div style="background: ;">
+        <div style="">
             <div class="bloglist">
                 <ul>
                     <c:forEach items="${blogs}" var="blog">
@@ -72,19 +72,46 @@
                 </ul>
             </div>
             <div class="pagelist">
-                <a title="Total record">&nbsp;<b>上一页</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;
-                <a href="/jstt/index_2.html">2</a>&nbsp;
-                <a href="/jstt/index_3.html">3</a>&nbsp;
-                <a href="/jstt/index_4.html">4</a>&nbsp;
-                <a href="/jstt/index_5.html">5</a>&nbsp;
-                <a href="/jstt/index_6.html">6</a>&nbsp;
-                <a href="/jstt/index_2.html">下一页</a>&nbsp;
-                <a href="/jstt/index_15.html">尾页</a>
+                <a id="lastpage" title="Total record" href="${pageContext.request.contextPath }/pageblogs?queryPage=${nowpage-1}">&nbsp;上一页 </a>&nbsp;&nbsp;&nbsp;
+
+
+               <c:forEach begin="1" end="${pages}" step="1" var="page">
+                   <a id="a${page}" href="${pageContext.request.contextPath }/pageblogs?queryPage=${page}">${page}</a>&nbsp;
+               </c:forEach>
+
+                <a id="nextpage" href="${pageContext.request.contextPath }/pageblogs?queryPage=${nowpage+1}">下一页</a>&nbsp;
+           <%--<input onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')"  style="width: 20px;" id="itxt" type="text">--%>
+                <input  oninput="if(value>${pages})value=${pages};if(value<1)value=1"   id="itxt" type="number" >
+                <a  id="mybutton"  >跳转</a>
             </div>
         </div>
 
     </div>
 </main>
 </body>
+<script >
+    $("#itxt").css({"width": "35px","height":"25px" })
+    $("#itxt").blur(function () {
+        var xpage=$("#itxt").val();
+       // alert(xpage)
+        if (xpage!=null&xpage!=""){
+            $("#mybutton").attr("href","${pageContext.request.contextPath }/pageblogs?queryPage="+xpage)
+        }
 
+    })
+
+
+$("#a${nowpage}").css("background","rosybrown")
+        $("#lastpage").click(function () {
+            if ( ${nowpage}== 1 ){
+               alert("已经是第一页了")
+            }
+        })
+      $("#nextpage").click(function () {
+          if (${nowpage}==${pages}){
+              alert("已经是最后一页了,返回第一页")
+          }
+      })
+
+</script>
 </html>
