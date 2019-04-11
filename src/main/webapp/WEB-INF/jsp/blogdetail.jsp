@@ -70,7 +70,7 @@
 
 
 
-            <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span><a href="">${blog.blog_remarks}</a></span></p>
+            <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span><a>${blog.blog_remarks}</a></span></p>
 
 
 
