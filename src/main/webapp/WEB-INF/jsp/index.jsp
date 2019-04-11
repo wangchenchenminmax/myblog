@@ -98,10 +98,10 @@
                             <div class="number">02</div>
                             <div class="body">
                                 <div class="location"></div>
-                                <div class="headline">随笔</div>
+                                <div class="headline"><a href="${pageContext.request.contextPath }/blogs">博客</a></div>
                                 <a href="#">
                                     <c:if test="${user!=null}">
-                                    <div class="link">New</div>
+                                    <div class="link"><a href="${pageContext.request.contextPath }/writeblog"> New</a></div>
                                 </a></c:if>
                             </div>
                         </div>
@@ -110,10 +110,10 @@
                             <div class="number">03</div>
                             <div class="body">
                                 <div class="location"></div>
-                                <div class="headline">随笔</div>
+                                <div class="headline"><a href="${pageContext.request.contextPath }/blogs">博客</a></div>
                                 <a href="#">
                                     <c:if test="${user!=null}">
-                                    <div class="link">New</div>
+                                    <div class="link"><a href="${pageContext.request.contextPath }/writeblog"> New</a></div>
                                 </a></c:if>
                             </div>
                         </div>
@@ -122,10 +122,10 @@
                             <div class="number">04</div>
                             <div class="body">
                                 <div class="location"></div>
-                                <div class="headline">随笔</div>
+                                <div class="headline"><a href="${pageContext.request.contextPath }/blogs">博客</a></div>
                                 <a href="#">
                                     <c:if test="${user!=null}">
-                                    <div class="link">New</div>
+                                    <div class="link"><a href="${pageContext.request.contextPath }/writeblog"> New</a></div>
                                 </a></c:if>
                             </div>
                         </div>
@@ -134,10 +134,10 @@
                             <div class="number">05</div>
                             <div class="body">
                                 <div class="location"></div>
-                                <div class="headline">随笔</div>
+                                <div class="headline"><a href="${pageContext.request.contextPath }/blogs">博客</a></div>
                                 <a href="#">
                                     <c:if test="${user!=null}">
-                                    <div class="link">New</div>
+                                    <div class="link"><a href="${pageContext.request.contextPath }/writeblog"> New</a></div>
                                 </a></c:if>
                             </div>
                         </div>
@@ -146,10 +146,10 @@
                             <div class="number">06</div>
                             <div class="body">
                                 <div class="location"></div>
-                                <div class="headline">随笔</div>
+                                <div class="headline"><a href="${pageContext.request.contextPath }/blogs">博客</a></div>
                                 <a href="#">
                                     <c:if test="${user!=null}">
-                                    <div class="link">New</div>
+                                    <div class="link"><a href="${pageContext.request.contextPath }/writeblog"> New</a></div>
                                 </a></c:if>
                             </div>
                         </div>
@@ -158,10 +158,10 @@
                             <div class="number">07</div>
                             <div class="body">
                                 <div class="location"></div>
-                                <div class="headline">随笔</div>
+                                <div class="headline"><a href="${pageContext.request.contextPath }/blogs">博客</a></div>
                                 <a href="#">
                                     <c:if test="${user!=null}">
-                                    <div class="link">New</div>
+                                    <div class="link"><a href="${pageContext.request.contextPath }/writeblog"> New</a></div>
                                 </a></c:if>
                             </div>
                         </div>
