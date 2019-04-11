@@ -161,7 +161,6 @@ public class UserController {
     public ModelAndView submitBlog(String blog_title,String blog_remarks,String blog_content ){
         User_blogs user_blogs=new User_blogs();
         SimpleDateFormat sdf=new SimpleDateFormat("yy/MM/dd HH:mm");
-//System.out.println(sdf.format(new Date()));
         user_blogs.setBlog_date(sdf.format(new Date()));
         user_blogs.setBlog_content(blog_content);
         user_blogs.setBlog_title(blog_title);
@@ -176,5 +175,31 @@ if (userService.addBlog( user_blogs)==1){
       //  System.out.println(  userService.addBlog( user_blogs));
         return new ModelAndView("index");
     }
+    @RequestMapping("/updateblog")
+    public ModelAndView updateBlog(int blog_id){
+      User_blogs user_blogs=  userService.getBlogById(blog_id);
+        ModelAndView mav=new ModelAndView("updateblog");
+        mav.addObject("changeblog",user_blogs);
+        return  mav;
+    }
+    @RequestMapping(value = "/submitupdateblog",method = RequestMethod.POST)
+    public  ModelAndView submitUpdate(String blog_title,String blog_remarks,String blog_content,int blog_id){
 
+        User_blogs user_blogs=new User_blogs();
+        SimpleDateFormat sdf=new SimpleDateFormat("yy/MM/dd HH:mm");
+        user_blogs.setBlog_date(sdf.format(new Date()));
+        user_blogs.setBlog_content(blog_content);
+        user_blogs.setBlog_title(blog_title);
+        user_blogs.setBlog_writer("admin");
+        user_blogs.setBlog_remarks(blog_remarks);
+        user_blogs.setBlog_id(blog_id);
+        //System.out.println("==========="+userService.updateBlog(user_blogs));
+        if (userService.updateBlog(user_blogs)==1){
+            ModelAndView mav=new ModelAndView("blogdetail");
+            mav.addObject("blog",user_blogs);
+            return  mav;
+        }
+
+        return new ModelAndView("index");
+    }
 }

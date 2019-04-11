@@ -12,7 +12,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>WRITE</title>
+    <title>UPDATE</title>
 
     <link href="${pageContext.request.contextPath }/static/css/index.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery.min.js"></script>
@@ -59,20 +59,20 @@
     <div class="main-content">
 
         <div style="background: #353E4A;">
-            <h2 style="color: #53e3a6"> ${blog.blog_title}
-                <c:if test="${user!=null}">
-                <span>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/updateblog?blog_id=${blog.blog_id}" style="color: white">修改</a></span>
-                </c:if>
-            </h2>
-            <div><textarea readonly style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; ">
-                ${blog.blog_content}</textarea></div>
+            <form action="${pageContext.request.contextPath }/submitupdateblog" method="post">
+                标题: <input name="blog_title" type="text" value="${changeblog.blog_title}"> <br>
+                标签:<input name="blog_remarks" type="text" value="${changeblog.blog_remarks}"> <br>
+<input hidden name="blog_id" value="${changeblog.blog_id}">
+
+                <div><textarea  name="blog_content" style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; ">${changeblog.blog_content}
+     </textarea></div>
 
 
 
-            <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span><a href="/">${blog.blog_remarks}</a></span></p>
+                <input type="submit" value="提交">
 
 
-
+            </form>
 
 
         </div>
@@ -82,4 +82,3 @@
 </body>
 
 </html>
-

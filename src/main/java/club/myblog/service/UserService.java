@@ -13,6 +13,7 @@ public interface UserService {
     User_blogs getBlogById(Integer blog_id);
     int addBlog(User_blogs user_blogs);
     int selectBlogCounts();
+    int updateBlog(User_blogs user_blogs);
 
 }
 

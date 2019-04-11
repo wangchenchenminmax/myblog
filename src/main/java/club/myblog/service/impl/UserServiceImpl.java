@@ -43,6 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
+    public int updateBlog(User_blogs user_blogs) {
+        return userMapper.updateBlog(user_blogs);
+    }
+
+    @Override
     public User_blogs getBlogById(Integer blog_id) {
         return userMapper.getBlogById( blog_id);
     }

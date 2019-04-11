@@ -20,4 +20,8 @@
     <insert id="addBlog" parameterType="user_blogs">
 INSERT INTO user_blogs (blog_title,blog_content,blog_date,blog_writer,blog_remarks) VALUES (#{blog_title},#{blog_content},#{blog_date},#{blog_writer},#{blog_remarks})
     </insert>
+    <update id="updateBlog" parameterType="user_blogs">
+      UPDATE user_blogs SET blog_content =#{blog_content},blog_title=#{blog_title},blog_remarks=#{blog_remarks} WHERE blog_id=#{blog_id}
+
+    </update>
 </mapper>
