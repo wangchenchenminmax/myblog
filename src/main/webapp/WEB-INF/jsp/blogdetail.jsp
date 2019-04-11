@@ -62,6 +62,7 @@
             <h2 style="color: #53e3a6"> ${blog.blog_title}
                 <c:if test="${user!=null}">
                 <span>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/updateblog?blog_id=${blog.blog_id}" style="color: white">修改</a></span>
+                    <span>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/deletblog?blog_id=${blog.blog_id}" style="color: white">删除</a></span>
                 </c:if>
             </h2>
             <div><textarea readonly style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; ">

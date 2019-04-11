@@ -16,4 +16,5 @@ public interface UserMapper {
    int addBlog(User_blogs user_blogs);
    int selectBlogCounts();
    int updateBlog(User_blogs user_blogs);
+   int delectBlog(@Param("blog_id") Integer blog_id);
 }

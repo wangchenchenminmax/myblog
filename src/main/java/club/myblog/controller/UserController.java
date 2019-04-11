@@ -202,4 +202,10 @@ if (userService.addBlog( user_blogs)==1){
 
         return new ModelAndView("index");
     }
+
+    @RequestMapping("/deletblog")
+public  ModelAndView deletBlog(int blog_id){
+        userService.delectBlog(blog_id);
+        return new ModelAndView("index");
+    }
 }

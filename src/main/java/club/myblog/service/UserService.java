@@ -14,6 +14,7 @@ public interface UserService {
     int addBlog(User_blogs user_blogs);
     int selectBlogCounts();
     int updateBlog(User_blogs user_blogs);
+    int delectBlog (Integer blog_id);
 
 }
 

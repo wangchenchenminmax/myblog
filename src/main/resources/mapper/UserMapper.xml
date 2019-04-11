@@ -24,4 +24,7 @@ INSERT INTO user_blogs (blog_title,blog_content,blog_date,blog_writer,blog_remar
       UPDATE user_blogs SET blog_content =#{blog_content},blog_title=#{blog_title},blog_remarks=#{blog_remarks} WHERE blog_id=#{blog_id}
 
     </update>
+    <delete id="delectBlog">
+       DELETE FROM user_blogs WHERE blog_id =#{blog_id}
+    </delete>
 </mapper>

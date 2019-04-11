@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int delectBlog(Integer blog_id) {
+        return userMapper.delectBlog(blog_id);
+    }
+
+    @Override
     public User_blogs getBlogById(Integer blog_id) {
         return userMapper.getBlogById( blog_id);
     }
