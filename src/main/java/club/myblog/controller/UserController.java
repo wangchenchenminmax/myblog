@@ -86,12 +86,13 @@ public class UserController {
         List<User_blogs> list= userService.getBlogs(0,4);
         int sum=userService.selectBlogCounts();
         int pages;
-        if (sum/4==0){
+        if (sum%4==0){
             pages=sum/4;
         }else {
             pages=sum/4 +1;
         }
-       // System.out.println("======"+ pages);
+       // System.out.println("======"+ sum);
+      //  System.out.println("======"+ pages);
         //System.out.println("----"+userService.selectBlogCounts());
         ModelAndView mav = new ModelAndView("bloglist");
         mav.addObject("blogs",list);
@@ -158,18 +159,21 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/submitblog",method = RequestMethod.POST)
-    public ModelAndView submitBlog(String blog_title,String blog_remarks,String blog_content ){
-        User_blogs user_blogs=new User_blogs();
-        SimpleDateFormat sdf=new SimpleDateFormat("yy/MM/dd HH:mm");
-        user_blogs.setBlog_date(sdf.format(new Date()));
-        user_blogs.setBlog_content(blog_content);
-        user_blogs.setBlog_title(blog_title);
-        user_blogs.setBlog_writer("admin");
-        user_blogs.setBlog_remarks(blog_remarks);
-if (userService.addBlog( user_blogs)==1){
-    ModelAndView mav=new ModelAndView("blogdetail");
-    mav.addObject("blog",user_blogs);
-    return mav;
+    public ModelAndView submitBlog(HttpSession session,String blog_title,String blog_remarks,String blog_content ){
+        if (!blog_title.equals("")&!blog_remarks.equals("")&!blog_content.equals("")){
+            User_blogs user_blogs=new User_blogs();
+            SimpleDateFormat sdf=new SimpleDateFormat("yy/MM/dd HH:mm");
+            user_blogs.setBlog_date(sdf.format(new Date()));
+            user_blogs.setBlog_content(blog_content);
+            user_blogs.setBlog_title(blog_title);
+            user_blogs.setBlog_writer("Seek-April");
+            user_blogs.setBlog_remarks(blog_remarks);
+            if (userService.addBlog( user_blogs)==1){
+                //ModelAndView mav=new ModelAndView("bloglist");
+                //mav.addObject("blog",user_blogs);
+                return queryBlogs(session);
+        }
+       return new ModelAndView("index");
     //return "blogdetail";
 }
       //  System.out.println(  userService.addBlog( user_blogs));
@@ -190,7 +194,7 @@ if (userService.addBlog( user_blogs)==1){
         user_blogs.setBlog_date(sdf.format(new Date()));
         user_blogs.setBlog_content(blog_content);
         user_blogs.setBlog_title(blog_title);
-        user_blogs.setBlog_writer("admin");
+        user_blogs.setBlog_writer("Seek-April");
         user_blogs.setBlog_remarks(blog_remarks);
         user_blogs.setBlog_id(blog_id);
         //System.out.println("==========="+userService.updateBlog(user_blogs));
@@ -204,8 +208,9 @@ if (userService.addBlog( user_blogs)==1){
     }
 
     @RequestMapping("/deletblog")
-public  ModelAndView deletBlog(int blog_id){
+public  ModelAndView deletBlog(HttpSession session,int blog_id){
         userService.delectBlog(blog_id);
-        return new ModelAndView("index");
+
+        return queryBlogs(session);
     }
 }

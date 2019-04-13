@@ -17,6 +17,7 @@
     <link href="${pageContext.request.contextPath }/static/css/index.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/static/js/comm.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/static/ckeditor/ckeditor.js"></script>
     <!--[if lt IE 9]>
     <script src="${pageContext.request.contextPath }/static/js/modernizr.js"></script>
     <![endif]-->
@@ -64,8 +65,7 @@
                 标签:<input name="blog_remarks" type="text"> <br>
 
 
-                <div><textarea name="blog_content" style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; ">
-     </textarea></div>
+                <div><textarea class="ckeditor" name="blog_content" style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; "></textarea></div>
 
 
 

@@ -66,7 +66,7 @@
                         <h2><a href="${pageContext.request.contextPath }/blogdetail?blog_id=${blog.blog_id}">${blog.blog_title}</a></h2>
                         <i><a href=""><img src=""></a></i>
                         <p class="blogtext">${blog.blog_content}</p>
-                        <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span><a>${blog.blog_remarks}</a></span></p>
+                        <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span>${blog.blog_remarks}</span></p>
                     </li>
                     </c:forEach>
                 </ul>

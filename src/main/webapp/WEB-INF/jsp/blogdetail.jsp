@@ -17,6 +17,8 @@
     <link href="${pageContext.request.contextPath }/static/css/index.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/static/js/comm.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/static/ckeditor/ckeditor.js"></script>
+
     <!--[if lt IE 9]>
     <script src="${pageContext.request.contextPath }/static/js/modernizr.js"></script>
     <![endif]-->
@@ -24,9 +26,11 @@
 
 <body>
 <header>
-    <div class="logo"><a href="${pageContext.request.contextPath }/index">Seek-April个人博客 </a>  <c:if test="${user==null}"> <a href="${pageContext.request.contextPath }/login">登录</a>
+    <div  class="logo"><a href="${pageContext.request.contextPath }/index">Seek-April个人博客 </a>
+        <c:if test="${user==null}"> <a href="${pageContext.request.contextPath }/login">登录</a>
+        </c:if>
 
-    </c:if></div>
+    </div>
     <div class="top-nav">
         <h2 id="mnavh"><span class="navicon"></span></h2>
 
@@ -56,21 +60,24 @@
 
 </aside>
 <main>
+
     <div class="main-content">
 
-        <div style="background: #353E4A;">
-            <h2 style="color: #53e3a6"> ${blog.blog_title}
+        <div style="">
+            <h2  style="color: #53e3a6;background:#3A434D;"> ${blog.blog_title}
                 <c:if test="${user!=null}">
-                <span>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/updateblog?blog_id=${blog.blog_id}" style="color: white">修改</a></span>
-                    <span>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/deletblog?blog_id=${blog.blog_id}" style="color: white">删除</a></span>
+                <span>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/updateblog?blog_id=${blog.blog_id}" style="color: black">修改</a></span>
+                    <span>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/deletblog?blog_id=${blog.blog_id}" style="color: black">删除</a></span>
                 </c:if>
             </h2>
-            <div><textarea readonly style="overflow-y: auto; color: #53e3a6;background:#3A434D; height: 900px;width: 100%;font-size: 24px; ">
-                ${blog.blog_content}</textarea></div>
+            <div >
 
+                <p> ${blog.blog_content}
 
+                </p><%--<p > ${blog.blog_content}</p>--%>
 
-            <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span><a>${blog.blog_remarks}</a></span></p>
+            </div>
+
 
 
 
@@ -78,8 +85,13 @@
 
         </div>
 
+        <div>
+
+        </div>
+
     </div>
 </main>
+
 </body>
 
 </html>
