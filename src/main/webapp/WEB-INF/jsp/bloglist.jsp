@@ -62,10 +62,10 @@
             <div class="bloglist">
                 <ul>
                     <c:forEach items="${blogs}" var="blog">
-                    <li>
+                    <li style="height: 180px">
                         <h2><a href="${pageContext.request.contextPath }/blogdetail?blog_id=${blog.blog_id}">${blog.blog_title}</a></h2>
                         <i><a href=""><img src=""></a></i>
-                        <p class="blogtext">${blog.blog_content}</p>
+                       <%-- <p class="blogtext">${blog.blog_content}</p>--%>
                         <p class="bloginfo"><span>${blog.blog_writer}</span><span>${blog.blog_date}</span><span>${blog.blog_remarks}</span></p>
                     </li>
                     </c:forEach>
