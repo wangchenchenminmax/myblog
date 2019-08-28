@@ -1,1 +1,70 @@
 2019-8-22
+    public static String getMergedRegionValue(Sheet sheet, int row, int column) {
+        int sheetMergeCount = sheet.getNumMergedRegions();
+
+        for (int i = 0; i < sheetMergeCount; i++) {
+            CellRangeAddress ca = sheet.getMergedRegion(i);
+            int firstColumn = ca.getFirstColumn();
+            int lastColumn = ca.getLastColumn();
+            int firstRow = ca.getFirstRow();
+            int lastRow = ca.getLastRow();
+
+            if (row >= firstRow && row <= lastRow) {
+                if (column >= firstColumn && column <= lastColumn) {
+
+                    Row fRow = sheet.getRow(firstRow);
+                    Cell fCell = fRow.getCell(firstColumn);
+                    return fCell.toString();
+                }
+            }
+        }
+
+        return null;
+    }
+    
+    public static void ExcelReadIteart(String filename)
+            throws EncryptedDocumentException, InvalidFormatException, IOException {
+
+        filename = "D:\\test\\各服务配置信息.xlsx";
+        // 2、创建输入流
+        FileInputStream input = new FileInputStream(filename);
+        // 3、通过工作簿工厂类来创建工作簿对象
+        Workbook workbook = WorkbookFactory.create(input);
+        // 4、遍历工作簿下面的所有工作表
+        int sheetnum = workbook.getNumberOfSheets();
+        System.out.println("工作表个数！==" + sheetnum);
+        for (int i = 0; i < sheetnum; i++) {
+            // 获取到单个工作表
+            Sheet sheet = workbook.getSheetAt(i);
+            // 获取工作表下的所有行数
+            int rownum = sheet.getPhysicalNumberOfRows();
+            // 获取第一行的单元格个数
+
+            for (int j = 0; j < rownum; j++) {
+                // 获取到每一行
+                Row row = sheet.getRow(j);
+                int cellnum = row.getPhysicalNumberOfCells();
+                //System.out.println("第"+j+"行的列数为：===="+cellnum);
+
+                // 获取每一行下的全部单元格
+                //row.getCell()
+                List<String> rowList = new ArrayList<String>();
+                for (int x = 0; x < cellnum; x++) {
+
+
+                    Cell cell = row.getCell(x);
+                    if (cell.toString().trim() != "" & cell.toString().trim() != null) {
+                        rowList.add(row.getCell(x).toString());
+
+                    } else {
+                        rowList.add(getMergedRegionValue(sheet, j, x));
+                    }
+                }
+                EXCEL_LIST.add(rowList);
+            }
+        }
+        // System.out.println(excelList);
+        System.out.println("工作表的行数：" + EXCEL_LIST.size() + "=====工作表的列数：" + EXCEL_LIST.get(0).size());
+        //System.out.println(excelList.size());
+
+    }
